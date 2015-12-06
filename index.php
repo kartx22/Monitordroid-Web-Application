@@ -2,7 +2,10 @@
 <?php 
 include_once 'db_functions.php'; 
 include_once 'access.php';
-?><!DOCTYPE html>
+if (!userIsLoggedIn()) {
+  header('Location: ./login.php');
+  exit();
+}?><!DOCTYPE html>
 <html>
 <!-- Monitordroid Web Application
      By Monitordroid Inc.
