@@ -2,10 +2,7 @@
 <?php 
 include_once 'db_functions.php'; 
 include_once 'access.php';
-if (!userIsLoggedIn()) {
-  header('Location: ./login.php');
-  exit();
-} ?><!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <!-- Monitordroid Web Application
      By Monitordroid Inc.
@@ -15,22 +12,22 @@ if (!userIsLoggedIn()) {
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-touch-icon-57x57.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="./img/apple-touch-icon-60x60.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="./img/apple-touch-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="76x76" href="./img/apple-touch-icon-76x76.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="./img/apple-touch-icon-114x114.png">
-      <link rel="apple-touch-icon" sizes="120x120" href="./img/apple-touch-icon-120x120.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="./img/apple-touch-icon-144x144.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="./img/apple-touch-icon-152x152.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon-180x180.png">
-      <link rel="icon" type="image/png" href="./img/favicon-32x32.png" sizes="32x32">
-      <link rel="icon" type="image/png" href="./img/android-chrome-192x192.png" sizes="192x192">
-      <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96">
-      <link rel="icon" type="image/png" href="./img/favicon-16x16.png" sizes="16x16">
-      <link rel="manifest" href="./manifest.json">
+      <link rel="apple-touch-icon" sizes="57x57" href="../img/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="../img/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="../img/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="../img/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="../img/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="../img/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon-180x180.png">
+      <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="../img/android-chrome-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="../img/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16">
+      <link rel="manifest" href="../src/manifest.json">
       <meta name="msapplication-TileColor" content="#da532c">
-      <meta name="msapplication-TileImage" content="./mstile-144x144.png">
+      <meta name="msapplication-TileImage" content="../mstile-144x144.png">
       <meta name="theme-color" content="#ffffff">
 
       <meta name="description" content="Monitordroid web application, the device management software for Android devices.">
@@ -41,14 +38,14 @@ if (!userIsLoggedIn()) {
 
       <script crossorigin="anonymous" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <!--End bootstrap-->
-      <script type="text/javascript" src="./lib/js_crookies.js"></script>
-      <script type="text/javascript" src="./md_utilities.js?v=0.199"></script>
-      <link rel="stylesheet" href="./main_style.css?v=2.01">
+      <script type="text/javascript" src="../lib/js_crookies.js"></script>
+      <script type="text/javascript" src="../src/md_utilities.js?v=0.199"></script>
+      <link rel="stylesheet" href="../src/main_style.css?v=2.01">
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.js"></script>-->
       <script type="text/javascript">
       var msgList = ["getbrowserhistory-1","getapps",'readsms-1', "contacts", "calls"];
       </script>
-      <script type="text/javascript" src="./md_core_index.js?v=0.02"></script>
+      <script type="text/javascript" src="../src/md_core_index.js?v=0.02"></script>
     </head>
     <body>
       <div id="dummy-tutorial-element"></div>
@@ -115,7 +112,7 @@ if (!userIsLoggedIn()) {
                       $(document).ready(function(){
                         $("#SD_<?php echo $rowid; ?>").click(function() {
                           $.ajax({
-                            url: "/src/switchdevice.php",
+                            url: "../src/switchdevice.php",
                             type: 'POST',
                             data: {
                               rowid: "<?php echo $rowid ?>",
@@ -152,7 +149,7 @@ if (!userIsLoggedIn()) {
                         ?>
                         <script>
                         $.ajax({
-                          url: "/src/send_message.php",
+                          url: "../src/send_message.php",
                           type: "GET",
                           data: {
                             message: "getdeviceinfo",
@@ -161,13 +158,13 @@ if (!userIsLoggedIn()) {
                         });
                         setTimeout(function() {
                           $.ajax({
-                            url: "/src/getmdversion.php",
+                            url: "../src/getmdversion.php",
                             method: "POST"
                           }).done(function(result){
                             if (result == "1.02R Updated") {
                               $('#first-visit-modal').modal('show');
                               $("#start-tutorial-btn").one("click", function() {
-                                $.get("/src/tutorialx.php", function(data) {
+                                $.get("../src/tutorialx.php", function(data) {
                                     $("#dummy-tutorial-element").html(data);
                                 });
                               });
@@ -194,20 +191,20 @@ if (!userIsLoggedIn()) {
                 <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chgPassModal" style="margin-top:7px">
                   Change Password
                 </button></li>
-                <li><a href="logout.php" >Log Out</a></li>
+                <li><a href="../src/logout.php" >Log Out</a></li>
               </ul>
             </div>
           </div>
           <ul class="nav nav-tabs" id="prodTabs" role="tablist">
-              <li role="presentation" class="active"><a href="#" data-target="#tab-curr" id="home_tab" data-toggle="tab" data-link="/src/controlx.php" role="tab" title="Home">Home</a></li>
-              <li role="presentation"><a href="#contacts" data-target="#tab-curr" id="contacts_tab" data-toggle="tab" data-link="/src/readcontactsx.php" role="tab" title="Contacts">Contacts</a></li>
-              <li role="presentation"><a href="#sms" data-target="#tab-curr" id="sms_tab" data-toggle="tab" data-link="/src/readsmsx.php" role="tab" title="SMS"><span class="visible-md-inline visible-lg-inline">Text </span>Messages</a></li>
-              <li role="presentation"><a href="#call_log" data-target="#tab-curr" id="call_log_tab" data-toggle="tab" data-link="/src/calllogx.php" role="tab" title="Call Log">Call Log</a></li>
-              <li role="presentation"><a href="#browser_history" data-target="#tab-curr" id="browser_history_tab" data-toggle="tab" data-link="/src/browserhistoryx.php" role="tab" title="Browser History">Browser History</a></li>
-              <li role="presentation"><a href="#location_log" data-target="#tab-curr" id="location_log_tab" data-toggle="tab" data-link="/src/locationlogx.php" role="tab" title="Location Log">Location Log</a></li>
-              <li role="presentation"><a href="#record" data-target="#tab-curr" id="record_tab" data-toggle="tab" data-link="/src/recordx.php" role="tab" title="Recording">Recording <span class="badge record-timer"></span></a></li>
-              <li role="presentation"><a href="#view_files" data-target="#tab-curr" id="view_files_tab" data-toggle="tab" data-link="/src/viewfilesx.php" role="tab" title="View Files">View Files/Photos</a></li>
-              <li role="presentation"><a href="#app_list" data-target="#tab-curr" id="app_list_tab" data-toggle="tab" data-link="/src/applistx.php" role="tab" title="App List">App List</a></li>
+              <li role="presentation" class="active"><a href="#" data-target="#tab-curr" id="home_tab" data-toggle="tab" data-link="../src/controlx.php" role="tab" title="Home">Home</a></li>
+              <li role="presentation"><a href="#contacts" data-target="#tab-curr" id="contacts_tab" data-toggle="tab" data-link="../src/readcontactsx.php" role="tab" title="Contacts">Contacts</a></li>
+              <li role="presentation"><a href="#sms" data-target="#tab-curr" id="sms_tab" data-toggle="tab" data-link="../src/readsmsx.php" role="tab" title="SMS"><span class="visible-md-inline visible-lg-inline">Text </span>Messages</a></li>
+              <li role="presentation"><a href="#call_log" data-target="#tab-curr" id="call_log_tab" data-toggle="tab" data-link="../src/calllogx.php" role="tab" title="Call Log">Call Log</a></li>
+              <li role="presentation"><a href="#browser_history" data-target="#tab-curr" id="browser_history_tab" data-toggle="tab" data-link="../src/browserhistoryx.php" role="tab" title="Browser History">Browser History</a></li>
+              <li role="presentation"><a href="#location_log" data-target="#tab-curr" id="location_log_tab" data-toggle="tab" data-link="../src/locationlogx.php" role="tab" title="Location Log">Location Log</a></li>
+              <li role="presentation"><a href="#record" data-target="#tab-curr" id="record_tab" data-toggle="tab" data-link="../src/recordx.php" role="tab" title="Recording">Recording <span class="badge record-timer"></span></a></li>
+              <li role="presentation"><a href="#view_files" data-target="#tab-curr" id="view_files_tab" data-toggle="tab" data-link="../src/viewfilesx.php" role="tab" title="View Files">View Files/Photos</a></li>
+              <li role="presentation"><a href="#app_list" data-target="#tab-curr" id="app_list_tab" data-toggle="tab" data-link="../src/applistx.php" role="tab" title="App List">App List</a></li>
               <li role="presentation" id="lastTab">
                 <a class="btn dropdown-toggle pull-right" data-toggle="dropdown" href="#" style="margin-top: 0; font-weight: 600" id="more-tab-link">
                   More <span class="caret"></span>
@@ -231,7 +228,7 @@ if (!userIsLoggedIn()) {
               <div class="limit-alert alert alert-danger fade in" role="alert">
                   <p class="lead">
                       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                      <strong>Error</strong> Looks like you have too many devices for your current account. You can delete a device from <a href="./src/devicemanage.php">Device Management</a>, or email <a href="mailto:sales@monitordroid.com">sales@monitordroid.com</a> for enterprise pricing options.
+                      <strong>Error</strong> Looks like you have too many devices for your current account. You can delete a device from <a href="../src/devicemanage.php">Device Management</a>, or email <a href="mailto:sales@monitordroid.com">sales@monitordroid.com</a> for enterprise pricing options.
                   </p>
               </div>
               <?php }
