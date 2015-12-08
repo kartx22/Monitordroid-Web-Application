@@ -17,7 +17,7 @@
                 var data = $('form#'+id).serialize();
                 $('form#'+id).unbind('submit');                
                 $.ajax({
-                    url: "send_message.php",
+                    url: "../src/send_message.php",
                     type: 'GET',
                     data: data,
                     beforeSend: function() {
@@ -58,10 +58,10 @@
 
 	$rName=$_POST["registration"];
     $rowId=$_POST["rowid"];
-	require_once 'access.php';
+	require_once '../access.php';
 	
 
-	include_once './db_functions.php';
+	include_once '../db_functions.php';
 
 	$db = new DB_Functions();
 	?>
