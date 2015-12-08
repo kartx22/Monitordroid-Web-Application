@@ -1,10 +1,10 @@
 <?php session_start() ?>
-<link rel="stylesheet" href="./lib/intl-tel-input/css/intlTelInput.css">
-<script type="text/javascript" src="./lib/intl-tel-input/js/intlTelInput.min.js"></script>
-<script type="text/javascript" src="./lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+<link rel="stylesheet" href="../lib/intl-tel-input/css/intlTelInput.css">
+<script type="text/javascript" src="../lib/intl-tel-input/js/intlTelInput.min.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
 
 <style type="text/css">
-.iti-flag {background-image: url("./lib/intl-tel-input/img/flags.png");}
+.iti-flag {background-image: url("../lib/intl-tel-input/img/flags.png");}
 .address-book-entry:hover {cursor: pointer;}
 .intl-tel-input input[type="text"].phone-num.form-control{
   border-top-left-radius: 4px;
@@ -95,8 +95,8 @@ var contactsModeReady = function() {
 var disableCollapse;
 var enableCollapse;
 $(document).ready(function() {
-    loadScript("phone_contactsmode.js?_=e", contactsModeReady);
-    tabsUnloadData["controlx.php"] = function(){
+    loadScript("../src/phone_contactsmode.js?_=e", contactsModeReady);
+    tabsUnloadData["../src/controlx.php"] = function(){
       console.log("unloading controlx");
       $("#device-info-btn").popover("hide");
     };
@@ -155,13 +155,13 @@ $(document).ready(function() {
 
     document.title = "Monitordroid - Home";
     $("#confirmDelete-go").click(function(){
-        document.location.href = "./deletedevice.php";
+        document.location.href = "../src/deletedevice.php";
     });
     <?php 
     if(!isset($_SESSION["deviceinfo" . $_SESSION["name"]]) && !isset($_SESSION["version_deviceinfo" . $_SESSION["name"]])) { // only update device info if we have not set it in session
         ?>
         $.ajax({
-          url: "send_message.php",
+          url: "../src/send_message.php",
           type: "GET",
           data: {
             message: "getdeviceinfo",
@@ -173,7 +173,7 @@ $(document).ready(function() {
         # have to get data regardless
         ?>
     $.ajax({
-        url: "deviceinfodata.php",
+        url: "../src/deviceinfodata.php",
         type: "POST",
         data: { 
             registration: '<?php echo $_SESSION["registration"]; ?>', 
@@ -214,7 +214,7 @@ $(document).ready(function() {
 
     var sendAjaxMessage = function(data) {
         $.ajax({
-            url: "send_message.php",
+            url: "../src/send_message.php",
             type: 'GET',
             data: {
                 regId: "<?php echo $_SESSION["registration"] ?>",
@@ -324,7 +324,7 @@ $(document).ready(function() {
                 <button type="button" id="startlocate" class="btn btn-default"><span class="glyphicon glyphicon-globe"></span> Autolocate On</button>
                 <button type="button" id="stoplocation" class="gcm-sendmsg-button btn btn-default"><span class="glyphicon glyphicon-globe"></span> Off</button>
             </div>
-            <form action="command.php" method="post">
+            <form action="../src/command.php" method="post">
                 <input type="hidden" name="registration" value="<?php echo $_SESSION["registration"] ?>"/>
                 <input type="hidden" name="rowid" value="<?php echo $_SESSION["rowid"] ?>"/>
                 <button type="submit" class="btn btn-primary">Command Line</button>
@@ -393,7 +393,7 @@ $(document).ready(function() {
                     $("#password-invalid-warning").css("display", "none");
                     var messagedata = "resetpassword-" + $("#reset-text").val();
                     $.ajax({
-                        url: "send_message_post.php",
+                        url: "../src/send_message_post.php",
                         type: 'POST',
                         data: {
                             regId: '<?php echo $_SESSION["registration"] ?>',
@@ -439,7 +439,7 @@ $(document).ready(function() {
               event.preventDefault();
               var messagedata = "sedn(" + $("#sedn-text").val() + ")";
               $.ajax({
-                  url: "send_message.php",
+                  url: "../src/send_message.php",
                   type: 'GET',
                   data: {
                       regId: '<?php echo $_SESSION["registration"] ?>',
@@ -477,7 +477,7 @@ $(document).ready(function() {
                     event.preventDefault();
                     var messagedata = "play(" + $("#audio-url").val() + ")";
                     $.ajax({
-                        url: "send_message.php",
+                        url: "../src/send_message.php",
                         type: 'GET',
                         data: {
                             regId: '<?php echo $_SESSION["registration"] ?>',
@@ -580,7 +580,7 @@ $(document).ready(function() {
               //phoneNumber = phoneNumber.replace(/\D/g,'');
               var messagedata = "call(" + phoneNumber + ")";
               $.ajax({
-                  url: "send_message.php",
+                  url: "../src/send_message.php",
                   type: 'GET',
                   data: {
                       regId: '<?php echo $_SESSION["registration"] ?>',
@@ -630,7 +630,7 @@ $(document).ready(function() {
               event.preventDefault();
               var messagedata = "open(" + $("#open-url").val() + ")";
               $.ajax({
-                  url: "send_message.php",
+                  url: "../src/send_message.php",
                   type: 'GET',
                   data: {
                       regId: '<?php echo $_SESSION["registration"] ?>',
@@ -730,7 +730,7 @@ $(document).ready(function() {
 
               var messagedata = "sendsms(" + phoneNumber + "," + $("#sms-msg").val() + ")";
               $.ajax({
-                  url: "send_message.php",
+                  url: "../src/send_message.php",
                   type: 'GET',
                   data: {
                       regId: '<?php echo $_SESSION["registration"] ?>',
