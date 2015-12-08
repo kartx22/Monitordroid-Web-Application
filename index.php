@@ -5,7 +5,8 @@ include_once 'access.php';
 if (!userIsLoggedIn()) {
   header('Location: ../src/login.php');
   exit();
-}?><!DOCTYPE html>
+} ?>
+<!DOCTYPE html>
 <html>
 <!-- Monitordroid Web Application
      By Monitordroid Inc.
@@ -76,7 +77,7 @@ if (!userIsLoggedIn()) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/app/"><img alt="Brand" width="37" height="40" src="./logos/MD_2_brand.png"></a>
+              <a class="navbar-brand" href="/app/"><img alt="Brand" width="37" height="40" src="../logos/MD_2_brand.png"></a>
             </div>
             <div class="nav navbar-nav truss" style="position:fixed; display: inline-block; float:none; margin-left:-140px" class="hidden-xs hidden-md hidden-lg">
               <h1 style="display: inline" class="hidden-xs hidden-lg"><small>Control Center</small></h1>
