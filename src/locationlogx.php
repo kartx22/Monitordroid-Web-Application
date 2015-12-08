@@ -63,7 +63,7 @@
     color: rgba(0,0,0,.6);
   }
 </style>
-<script type="text/javascript" src="./lib/Geohash.js"></script>
+<script type="text/javascript" src="../lib/Geohash.js"></script>
 <script type="text/javascript" id="doc-init-script">
 /*jshint maxerr: 10000 */
 var locationstoshow;
@@ -104,7 +104,7 @@ $(document).ready(function () {
     
     $("#clear_btn").click(function() {
         $.ajax({
-            url: "clear_locationlog.php",
+            url: "../src/clear_locationlog.php",
             type: 'POST',
             data: {
               regId: "<?php echo $rName ?>"
@@ -118,14 +118,14 @@ $(document).ready(function () {
     });
     /*if (Cookies('options_autoRefreshPages') != "false") {
         var updateIntervalID = setInterval(updateProc, 1000 * 60);
-        tabsUnloadData["locationlogx.php"] = function(){
+        tabsUnloadData["../src/locationlogx.php"] = function(){
             console.log("unloading locationlogx");
             clearInterval(updateIntervalID);
         };
     }*/
     var sendAjaxMessage = function(data) {
       $.ajax({
-          url: "send_message.php",
+          url: "../src/send_message.php",
           type: 'GET',
           data: {
               regId: "<?php echo $rName; ?>",
@@ -258,7 +258,7 @@ var initialize = function(json) {
             position: xlatlng,
             map: xmap,
             title: "<?php echo $dName ?> " + xx,
-            icon: (dispx >= 100) ? ('https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|eeeeee|12|b|'+ dispx) : ('./img/number_' + dispx + '.png'), // TODO only works up to 100
+            icon: (dispx >= 100) ? ('https://chart.googleapis.com/chart?chst=d_map_spin&chld=1|0|eeeeee|12|b|'+ dispx) : ('../img/number_' + dispx + '.png'), // TODO only works up to 100
             zIndex: xx // prioritize geolocated markers
         });
         markersArray[''+xx+''] = xmarker; // only seems to work if key is string
@@ -331,7 +331,7 @@ var initialize = function(json) {
             position: xlatlng,
             map: xmap,
             title: "<?php echo $dName ?> " + dispx,
-            icon: './img/number_' + dispx + '.png', 
+            icon: '../img/number_' + dispx + '.png', 
             zIndex: xx // prioritize geolocated markers -- MAYBE NOT??
             // if we have more than 10 we need to still display low-leveled ones
         });*/
@@ -485,7 +485,7 @@ var initialize = function(json) {
 };
 window.delayInit = function(){
     console.log("delayinit");
-    handleCallback("location", "locationlogdata.php", initialize, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("location", "../src/locationlogdata.php", initialize, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 };
 
 </script>
@@ -531,5 +531,3 @@ window.delayInit = function(){
 </div>
 
 <div id="map_canvas"></div>
-
-
