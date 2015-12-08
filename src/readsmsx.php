@@ -63,15 +63,15 @@ table {
 }
 </style>
 
-<link rel="stylesheet" type="text/css" href="./lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/moment.min.js"></script>
-<link rel="stylesheet" href="./lib/intl-tel-input/css/intlTelInput.css">
-<script type="text/javascript" src="./lib/intl-tel-input/js/intlTelInput.min.js"></script>
-<script type="text/javascript" src="./lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
-<script type="text/javascript" src="./phone_contactsmode.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
+<script type="text/javascript" src="../lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+<script type="text/javascript" src="..lib/bootstrap-sortable/Scripts/moment.min.js"></script>
+<link rel="stylesheet" href="../lib/intl-tel-input/css/intlTelInput.css">
+<script type="text/javascript" src="../lib/intl-tel-input/js/intlTelInput.min.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+<script type="text/javascript" src="../src/phone_contactsmode.js"></script>
 <style type="text/css">
-.iti-flag {background-image: url("./lib/intl-tel-input/img/flags.png");}
+.iti-flag {background-image: url("../lib/intl-tel-input/img/flags.png");}
 .address-book-entry:hover {cursor: pointer;}
 .intl-tel-input input[type="text"].phone-num.form-control{
     border-top-left-radius: 4px;
@@ -150,7 +150,7 @@ var generateDisplay = function(json) {
     var xhr;
     if (sms_data[0] && sms_data[0].contact == null && experimentalResolveContacts) {
         xhr = $.ajax({
-            url: "contactsdata_np.php",
+            url: "../src/contactsdata_np.php",
             type: "POST", 
             data: {
                 registration: "<?php echo $rName ?>", 
@@ -276,7 +276,7 @@ var stageTwo = function(){
     // will poll server and call loadedCallback with result after data has been loaded
     // will also not show textHint if currMsgNum is greater than one, and thus we are
     // loading more messages
-    handleCallback("readsms", "smsdata.php", loadedCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>", (currMsgNum > 1) ? true : false);
+    handleCallback("readsms", "../src/smsdata.php", loadedCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>", (currMsgNum > 1) ? true : false);
     if (currMsgNum > 1) {
         $("#loadMore").css("display", "block");
     }
@@ -403,14 +403,14 @@ $(document).ready(function() {
     };
     if (Cookies.get('options_autoRefreshPages') == "true") {
         var updateIntervalID = setInterval(updateProc, (Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1) * 1000 * 60));
-        tabsUnloadData["readsmsx.php"] = function(){
+        tabsUnloadData["../src/readsmsx.php"] = function(){
             console.log("unloading smsx");
             clearInterval(updateIntervalID);
             pageUnloadProc();
         };
     }
     else {
-        tabsUnloadData["readsmsx.php"] = function(){
+        tabsUnloadData["../src/readsmsx.php"] = function(){
             pageUnloadProc();
         };
     }
@@ -459,7 +459,7 @@ $(document).ready(function() {
 
         var messagedata = "sendsms(" + phoneNumber + "," + $("#sms-msg").val() + ")";
         $.ajax({
-            url: "send_message.php",
+            url: "../src/send_message.php",
             type: 'GET',
             data: {
                 regId: '<?php echo $_SESSION["registration"] ?>',
@@ -499,7 +499,7 @@ $(document).ready(function() {
 
     $("#txtMsgs").css('display', 'none');
     //handleDelay("lastRefreshreadsms", loadSMSCallback, 0/*loadTime * 1000*/);
-    handleCallback("readsms", "smsdata.php", loadSMSCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("readsms", "../src/smsdata.php", loadSMSCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
 
     $("#select-inbox").click(function(){
