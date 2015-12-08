@@ -12,7 +12,7 @@
     $newName = $_POST['new_name'];
 
 
-	include_once './db_functions.php';
+	include_once '../db_functions.php';
 	$db = new DB_Functions();
 	$res = $db->changeDeviceName($rowId, $email, $newName);
 
