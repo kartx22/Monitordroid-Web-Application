@@ -69,15 +69,15 @@ table {
     $rName = $_SESSION["registration"];
     $rowId = $_SESSION["rowid"];
 ?>
-<link rel="stylesheet" type="text/css" href="./lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/moment.min.js"></script>
-<link rel="stylesheet" href="./lib/intl-tel-input/css/intlTelInput.css">
-<script type="text/javascript" src="./lib/intl-tel-input/js/intlTelInput.min.js"></script>
-<script type="text/javascript" src="./lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
-<script type="text/javascript" src="./phone_contactsmode.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
+<script type="text/javascript" src="../lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-sortable/Scripts/moment.min.js"></script>
+<link rel="stylesheet" href="../lib/intl-tel-input/css/intlTelInput.css">
+<script type="text/javascript" src="../lib/intl-tel-input/js/intlTelInput.min.js"></script>
+<script type="text/javascript" src="../lib/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+<script type="text/javascript" src="../src/phone_contactsmode.js"></script>
 <style type="text/css">
-.iti-flag {background-image: url("./lib/intl-tel-input/img/flags.png");}
+.iti-flag {background-image: url("../lib/intl-tel-input/img/flags.png");}
 .address-book-entry:hover {cursor: pointer;}
 .intl-tel-input input[type="text"].phone-num.form-control{
     border-top-left-radius: 4px;
@@ -166,7 +166,7 @@ var generateDisplay = function(json) {
     }
     if (calls_data[0] && calls_data[0].contact == null && experimentalResolveContacts) {
         xhr = $.ajax({
-            url: "contactsdata_np.php",
+            url: "../sec/contactsdata_np.php",
             type: "POST", 
             data: { 
               //These are the variables and their relative values
@@ -274,7 +274,7 @@ var stageTwo = function(){
         updateFilter();
         $("#update_btn").prop("disabled", false);
     };
-    handleCallback("calls", "calllogdata.php", loadedCallback, '<?php echo $rName ?>', '<?php echo $rowId ?>');
+    handleCallback("calls", "../src/calllogdata.php", loadedCallback, '<?php echo $rName ?>', '<?php echo $rowId ?>');
     //poll("calllogdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, loadedCallback, "calls");
 
 };
@@ -367,14 +367,14 @@ $(document).ready(function() {
     };
     if (Cookies.get('options_autoRefreshPages') == "true") {
         var updateIntervalID = setInterval(updateProc, (Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1) * 1000 * 60));
-        tabsUnloadData["calllogx.php"] = function(){
+        tabsUnloadData["../src/calllogx.php"] = function(){
             console.log("unloading callsx");
             clearInterval(updateIntervalID);
             pageUnloadProc();
         };
     }
     else {
-        tabsUnloadData["calllogx.php"] = function(){
+        tabsUnloadData["../src/calllogx.php"] = function(){
             pageUnloadProc();
         };
     }
@@ -423,7 +423,7 @@ $(document).ready(function() {
 
         var calldata = "call(" + phoneNumber + ")";
         $.ajax({
-            url: "send_message.php",
+            url: "../src/send_message.php",
             type: 'GET',
             data: {
                 regId: '<?php echo $_SESSION["registration"] ?>',
@@ -442,7 +442,7 @@ $(document).ready(function() {
     // if we just loaded wait a minute
     /*var loadCallsCallback = function() {
         $.ajax({
-            url: "calllogdata.php",
+            url: "../src/calllogdata.php",
             type: "POST",
             data: {
                 registration: "<?php echo $rName ?>",
@@ -455,7 +455,7 @@ $(document).ready(function() {
     };*/
     $("#calllog").css('display', 'none');
     //handleDelay("lastRefreshcalls", loadCallsCallback, 2.5 * 1000);
-    handleCallback("calls", "calllogdata.php", generateDisplay, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("calls", "../src/calllogdata.php", generateDisplay, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
 
     $("#select-incoming").click(function(){
