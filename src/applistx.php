@@ -42,8 +42,8 @@ var stageTwo = function() {
         $("#txtHint").css("display", "none");
         addLinks();
     };
-    handleCallback("getapps", "applistdata.php", loadedCallback, '<?php echo $rName ?>', '<?php echo $rowId ?>');
-    //poll("applistdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, loadedCallback, "getapps");
+    handleCallback("getapps", "../src/applistdata.php", loadedCallback, '<?php echo $rName ?>', '<?php echo $rowId ?>');
+    //poll("../src/applistdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, loadedCallback, "getapps");
 
 };
 var updatePage = function() {
@@ -143,11 +143,11 @@ $(document).ready(function() {
         }
     };
 
-    handleCallback("getapps", "applistdata.php", loadApplistCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("getapps", "../src/applistdata.php", loadApplistCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
     if (Cookies.get('options_autoRefreshPages') == "true") {
         var updateIntervalID = setInterval(updatePage, Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1) * 1000 * 60);
-        tabsUnloadData["applistx.php"] = function(){
+        tabsUnloadData["../src/applistx.php"] = function(){
             clearInterval(updateIntervalID);
         };
     }
