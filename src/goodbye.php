@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!--end bootstrap-->
-    <link rel="stylesheet" href="./main_style.css">
+    <link rel="stylesheet" href="../src/main_style.css">
     <style>
     body {
         font-family: Helvetica, Arial, sans-serif;
@@ -55,7 +55,7 @@
     <title>Logged Out</title>
     <script type="text/javascript">
     (function(){
-        setTimeout(function(){window.location.href = "./"; }, 1200);
+        setTimeout(function(){window.location.href = "../"; }, 1200);
     })();
     </script>
 </head>
