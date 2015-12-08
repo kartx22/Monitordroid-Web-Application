@@ -38,12 +38,12 @@ var disableContactsMode = function(form) {
     //form.find('label:contains(Contact Name)').text("Phone Number");
     //var phoneEl = form.find(".phone-num");
     // phoneEl.intlTelInput({
-    //   utilsScript: "./lib/intl-tel-input/js/utils.js",
+    //   utilsScript: "../lib/intl-tel-input/js/utils.js",
     //   autoPlaceholder: true,
     //   nationalMode: true,
     //   autoFormat: true
     // });
-    // phoneEl.intlTelInput("loadUtils", "./lib/intl-tel-input/js/utils.js");
+    // phoneEl.intlTelInput("loadUtils", "../lib/intl-tel-input/js/utils.js");
 };
 var enableContactsMode = function(form) {
     // form is the parent form (ie #sms-form or #call-form)
@@ -94,12 +94,12 @@ var initializeContactsMode = function(modal, form) {
         modal.find("button[type=submit]").popover("hide");
     });
     phoneEl.intlTelInput({
-        utilsScript: "./lib/intl-tel-input/js/utils.js",
+        utilsScript: "../lib/intl-tel-input/js/utils.js",
         autoPlaceholder: true,
         nationalMode: true,
         autoFormat: true
     });
-    phoneEl.intlTelInput("loadUtils", "./lib/intl-tel-input/js/utils.js");
+    phoneEl.intlTelInput("loadUtils", "../lib/intl-tel-input/js/utils.js");
     phoneEl.preBind("keypress", function(e){
         if (e.which < 48 || e.which > 57) {
             e.stopImmediatePropagation();
@@ -168,7 +168,7 @@ var initializeContactsMode = function(modal, form) {
     }
     else {
         var xhr = $.ajax({
-            url: "contactsdata_np.php",
+            url: "../src/contactsdata_np.php",
             type: "POST", 
             data: { 
               //These are the variables and their relative values
