@@ -6,7 +6,7 @@
 	    exit();
     }
 
-    include_once 'db_functions.php';
+    include_once '../db_functions.php';
     $db = new DB_Functions();
     $users = $db->getUserByEmail($_SESSION['email']);
     $maxNumberOfDevices = $db->getMaxDevices($_SESSION['email']);
@@ -23,22 +23,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="apple-touch-icon" sizes="57x57" href="./apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="./apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="./apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="./apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="./android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="../img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../img/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="../img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="../src/manifest.json">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="./mstile-144x144.png">
+    <meta name="msapplication-TileImage" content="../img/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!--end bootstrap-->
-    <link rel="stylesheet" href="./main_style.css">
+    <link rel="stylesheet" href="../src/main_style.css">
     <style>
     td {
         cursor: default;
@@ -247,7 +247,7 @@
                     }
                     $.ajax({
                         method: "POST",
-                        url: "devicechangename.php",
+                        url: "../src/devicechangename.php",
                         data: {"id": parentThis.attr("data-id"), "new_name": xthis.val()}
                     }).done(function(){
                         parentThis.attr("data-origname", xthis.val());
@@ -371,7 +371,7 @@
     <div class="shadow">
         <div class="super-container">
             <div class="device-manage">
-                <p class="lead"><a href="./">Return to App</a></p>
+                <p class="lead"><a href="../">Return to App</a></p>
                 <h2 >Manage Devices <small><?php echo $_SESSION['email']; ?></small></h2>
                 <div class="row account-info">
                     <div class="col-xs-12">
@@ -411,7 +411,7 @@
                                                 <td><?php echo $row["created_at"]; ?></td>
                                                 <td><?php echo $row["devicename"]; ?></td>
                                                 <td>
-                                                    <form action="deletedeviceverify.php" method="post">
+                                                    <form action="../src/deletedeviceverify.php" method="post">
                                                         <input type="hidden" name="rowid" value="<?php echo $row["id"] ?>"/>
                                                         <button type="submit" class="btn btn-primary">Delete</button>
                                                     </form>
