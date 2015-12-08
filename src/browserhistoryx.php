@@ -121,7 +121,7 @@ var stageTwo = function(){
     // will poll server and call loadedCallback with result after data has been loaded
     // will also not show textHint if currMsgNum is greater than one, and thus we are
     // loading more browser history
-    handleCallback("getbrowserhistory", "browserhistorydata.php", loadedCallback,
+    handleCallback("getbrowserhistory", "../src/browserhistorydata.php", loadedCallback,
                    "<?php echo $rName ?>", "<?php echo $rowId ?>", (currMsgNum > 1) ? true : false);
     if (currMsgNum > 1) {
         $("#loadMore").css("display", "block");
@@ -288,14 +288,14 @@ $(document).ready(function() {
 
 	//handleDelay("lastRefreshgetbrowserhistory", loadBrowserHistCallback,  8000);
 
-    handleCallback("getbrowserhistory", "browserhistorydata.php", loadBrowserHistCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("getbrowserhistory", "../src/browserhistorydata.php", loadBrowserHistCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
 
 	if (Cookies.get('options_autoRefreshPages') == "true") {
 		var updateIntervalID = setInterval(updateProc, Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1) * 1000 * 60);
         console.log("set interval", Number(Cookies.get('options_autoRefreshFreq')));
 
-		tabsUnloadData["browserhistoryx.php"] = function(){
+		tabsUnloadData["../src/browserhistoryx.php"] = function(){
 			console.log("unloading browser history");
 		    clearInterval(updateIntervalID);
 		};
