@@ -12,7 +12,7 @@
 
 	$rName=$_POST["regName"];
 	
-	include_once './db_functions.php';
+	include_once '../db_functions.php';
 	$db = new DB_Functions();
 	
 	//If it's the first update, call the function which clears previous SMS data and inserts the new data into the beginning
