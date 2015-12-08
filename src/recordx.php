@@ -156,7 +156,7 @@ audio {
       <script type="text/javascript">
       var audioLoadTime = 10000;
 
-      tabsUnloadData["recordx.php"] = function(){
+      tabsUnloadData["../src/recordx.php"] = function(){
         if (recordingActive) {
           $("#prodTabs .record-timer").attr("data-time-s", $("#txtHint > .record-timer").attr("data-time-s"));
         }
@@ -251,7 +251,7 @@ audio {
           $('.spinner').css("display","block");
           $('.loading-msg').text("Please wait as we load your audio...");
           setTimeout(function(){
-            handleCallback("record", "audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+            handleCallback("record", "../src/audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
           }, Number($("#audio-record-seconds").val()) * 200 * 60 + 300);
         }, Number($("#audio-record-seconds").val()) * 1000 * 60);
       };
@@ -301,16 +301,16 @@ audio {
           console.log('deltaToCompleteTime', deltaToCompleteTime);
           if (deltaToCompleteTime > 0) { // if positive then we still have to wait
             setTimeout(function(){
-              handleCallback("record", "audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+              handleCallback("record", "../src/audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
             }, deltaToCompleteTime * 1000); // 
           }
           else { // otherwise load immediately
-            handleCallback("record", "audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+            handleCallback("record", "../src/audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
           }
         }
         else {
 
-          handleCallback("record", "audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+          handleCallback("record", "../src/audiouploadready.php", updateAudioDone, "<?php echo $rName ?>", "<?php echo $rowId ?>");
         }
         if (window.record_interval_id != null || deltaToCompleteTime > 0) {
           //clearInterval(window.record_interval_id);          
@@ -386,11 +386,11 @@ audio {
 </div>
 <div id="audio-disp" style="margin-top: 6px">
   <audio controls preload="auto" style="width:480px" id="audio-el">
-    <source src="./audioecho.php" type="audio/mp4" />
+    <source src="../src/audioecho.php" type="audio/mp4" />
     Your browser does not support HTML5 audio.
   </audio>
   <p>
-    <a href="./audioecho.php?d=download">Download audio (m4a)</a>
+    <a href="../src/audioecho.php?d=download">Download audio (m4a)</a>
   </p>
 </div>
 <div id="txtHint">
