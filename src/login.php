@@ -1,8 +1,8 @@
 <?php if (!isset($_SESSION)) { session_start(); }
 if (isset($_SESSION['loggedIn'])) {
-    require_once "access.php";
+    require_once ('../access.php');
     if (userIsLoggedIn()) {
-        header("Location: ./");
+        header("Location: ../");
         exit();
     }
 }
@@ -18,20 +18,20 @@ if (isset($_SESSION['loggedIn'])) {
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="apple-touch-icon" sizes="57x57" href="./apple-touch-icon-57x57.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="./apple-touch-icon-60x60.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="./apple-touch-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon-76x76.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="./apple-touch-icon-114x114.png">
-      <link rel="apple-touch-icon" sizes="120x120" href="./apple-touch-icon-120x120.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="./apple-touch-icon-144x144.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-152x152.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
-      <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
-      <link rel="icon" type="image/png" href="./android-chrome-192x192.png" sizes="192x192">
-      <link rel="icon" type="image/png" href="./favicon-96x96.png" sizes="96x96">
-      <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
-      <link rel="manifest" href="./manifest.json">
+      <link rel="apple-touch-icon" sizes="57x57" href="../img/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="../img/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="../img/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="../img/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="../img/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="../img/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon-180x180.png">
+      <link rel="icon" type="image/png" href="../img/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="../img/android-chrome-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="../img/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="../img/favicon-16x16.png" sizes="16x16">
+      <link rel="manifest" href="../src/manifest.json">
       <meta name="msapplication-TileColor" content="#da532c">
       <meta name="msapplication-TileImage" content="./mstile-144x144.png">
       <meta name="theme-color" content="#ffffff">
@@ -43,11 +43,11 @@ if (isset($_SESSION['loggedIn'])) {
 
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
       <!--End bootstrap-->
-      <script src="./lib/js_crookies.js"></script>
-      <script src="./md_utilities.js"></script>
+      <script src="../lib/js_crookies.js"></script>
+      <script src="../src/md_utilities.js"></script>
       <link rel="stylesheet" href="./main_style.css?v=2.0">
-      <?php include_once 'db_functions.php';
-      require_once 'access.php';?>
+      <?php include_once ('../db_functions.php');
+      require_once ('../access.php');?>
 <style>
 html {
     height: 100%;
@@ -298,7 +298,7 @@ $(document).ready(function(){
                                                                     unset($_SESSION["loginError"]);
                                                                 } ?></span><span id="js-replace">Javascript is disabled/not supported by your browser.<br>Try switching browsers (we suggest <a class="alert-link" href="https://www.google.com/chrome/browser/">Google Chrome</a>), <a class="alert-link" href="./?rnd=<?php echo rand(0, 1000); ?>">refreshing</a>, or emailing us at <a class="alert-link" href="mailto:help@monitordroid.com">help@monitordroid.com</a></span>
             </div>
-            <div style="margin-left: 6px"><img src="./logos/MD_2_horizontal_white_lg_text_lightercolors.png" alt="Monitordroid" width="236" height="79"></div>
+            <div style="margin-left: 6px"><img src="../logos/MD_2_horizontal_white_lg_text_lightercolors.png" alt="Monitordroid" width="236" height="79"></div>
             <form method="post" id="usr-login" action="loginverf.php">
                 <p><i class="fa fa-user"></i><input type="text" name="email" id="email" placeholder="email"  /></p>
                 <p><i class="fa fa-lock"></i><input type="password" name="password" id="password" placeholder="password" /></p>
