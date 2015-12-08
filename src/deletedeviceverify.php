@@ -7,7 +7,7 @@
     }
 	$rowid = $_POST["rowid"];
 
-	include_once './db_functions.php';
+	include_once '../db_functions.php';
 	$db = new DB_Functions();
     $email = $_SESSION['email'];
 	$res = $db->deleteDeviceVerify($rowid, $email);
@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <!--end bootstrap-->
-        <link rel="stylesheet" href="./main_style.css">
+        <link rel="stylesheet" href="../src/main_style.css">
         <style>
         body {
             font-family: Helvetica, Arial, sans-serif;
@@ -106,7 +106,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <!--end bootstrap-->
-        <link rel="stylesheet" href="./main_style.css">
+        <link rel="stylesheet" href="../src/main_style.css">
         <style>
         body {
             font-family: Helvetica, Arial, sans-serif;
