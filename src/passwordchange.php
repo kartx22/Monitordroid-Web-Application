@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!--end bootstrap-->
-    <link rel="stylesheet" href="./main_style.css">
+    <link rel="stylesheet" href="../src/main_style.css">
     <style>
     body {
         font-family: Helvetica, Arial, sans-serif;
@@ -59,10 +59,10 @@
 <div class="super-container">
     <div class="centered">
 <?php
-include_once './db_functions.php';
-		require_once 'access.php';
+include_once '../db_functions.php';
+		require_once '../access.php';
 		if (!userIsLoggedIn()) {
-			include 'login.php';
+			include '../src/login.php';
 			exit();
 		}
 $db = new DB_Functions();
@@ -130,7 +130,7 @@ if (isset($_POST['currentpwd']) and isset($_POST['newpass']) and isset ($_POST['
 function checkPassword($upassword)
 {
 	// returns whether unhashed upassword matches with hashed SESSION['password']
-	require("./lib/PasswordHash.php");
+	require("../lib/PasswordHash.php");
 	$hasher = new PasswordHash(8, false);
 	// Just in case the hash isn't found
 	$hashedPassword = "*";
@@ -144,7 +144,7 @@ function getPasswordHash($upassword)
 {
     if (strlen($upassword) > 72) { die("Password must be 72 characters or less"); }
     $db = new DB_Functions();
-    require_once("./lib/PasswordHash.php");
+    require_once("../lib/PasswordHash.php");
     $hasher = new PasswordHash(8, false);
     $hashedPassword = $hasher->HashPassword($upassword);
     if (strlen($hashedPassword) < 20) {
