@@ -84,12 +84,12 @@ function calcTime(offset) {
 			var denverTime = calctime(-7);
 			console.log("dtime = " + denverTime);
 			$.ajax({
-			  url: "checkpicload.php",
+			  url: "../src/checkpicload.php",
 			  type: "POST", 
 			  data: { 'start_time': denverTime },
 			  success:function(result){
 			  	if (result == "true") {
-			  		$("#txtHint").html('<image class="usr-img" src="./getpic.php" alt="Device Image">');
+			  		$("#txtHint").html('<image class="usr-img" src="../src/getpic.php" alt="Device Image">');
 			  	}
 			  	else {
 			  		stageTwo();
@@ -99,7 +99,7 @@ function calcTime(offset) {
 		}, 10000);
 	};
 	$.ajax({
-	  url: "send_message.php",
+	  url: "../src/send_message.php",
 	  type: "GET", //Or even get
 	  data: {
 	  	message: "uploadpic(" + suid + ")",
