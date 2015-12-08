@@ -200,8 +200,8 @@ a:hover {
     $rowId = $_SESSION["rowid"];
 ?>
 
-<link rel="stylesheet" type="text/css" href="./lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
+<script type="text/javascript" src="../lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
 
 <script type="text/javascript">
 jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
@@ -288,19 +288,19 @@ var loadFile = function(xthis){
         setTimeout(function() {
             console.log("dtime is " + denverTime);
             $.ajax({
-              url: "checkfileload.php",
+              url: "../src/checkfileload.php",
               type: "POST", 
               data: { start_time: denverTime, ext: ext }
             }).done(function(result) {
                 if (result == "true") {
                     if (ext.toLowerCase() == "gif" || ext.toLowerCase() == "jpg" ||
                         ext.toLowerCase() == "jpeg" || ext.toLowerCase() == "png") {
-                       $("#file-body").html('<image class="usr-file" src="./getfile.php?ext=' + ext + '" alt="Device Image">');
+                       $("#file-body").html('<image class="usr-file" src="../src/getfile.php?ext=' + ext + '" alt="Device Image">');
                     }
                     else if (ext.toLowerCase() == "txt") {
                         $.ajax({
                             method: "get",
-                            url: "./getfile.php",
+                            url: "../src/getfile.php",
                             data: { "ext": ext } 
                         }).done(function(res){
                             $("#file-body").html(res);
@@ -310,7 +310,7 @@ var loadFile = function(xthis){
                         $("#file-body").html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><span class="sr-only">File Download</span> File successfully loaded. Press Download below to retrieve it.</div>');
                     }
                     
-                    $("#file-download-btn-container").html('<a class="btn btn-primary" aria-label="Download File" href="./getfile.php?ext=' + ext + '&name=' + suid + '">Download <span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
+                    $("#file-download-btn-container").html('<a class="btn btn-primary" aria-label="Download File" href="../src/getfile.php?ext=' + ext + '&name=' + suid + '">Download <span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>');
                     $("#file-loading").fadeOut(function(){
                         $("#file-body").fadeIn();
                     });
@@ -325,7 +325,7 @@ var loadFile = function(xthis){
     var stf = "uploadfile(" + suid + ");" + globalPath;
     console.log(stf);
     $.ajax({
-      url: "send_message.php",
+      url: "../src/send_message.php",
       type: "GET",
       data: {
         message: stf,
@@ -499,12 +499,12 @@ var stageTwo = function() {
       $(".goto").prop("disabled", false);
       $("#change-path-goto").prop("disabled", false);
     };
-    //poll("viewfilesdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, initializeAjaxElements, "getfilelist");
-    handleCallback("getfilelist", "viewfilesdata.php", initializeAjaxElements, "<?php echo $_SESSION["registration"] ?>", "<?php echo $_SESSION["rowid"] ?>");
+    //poll("../src/viewfilesdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, initializeAjaxElements, "getfilelist");
+    handleCallback("getfilelist", "../src/viewfilesdata.php", initializeAjaxElements, "<?php echo $_SESSION["registration"] ?>", "<?php echo $_SESSION["rowid"] ?>");
 
     /*setTimeout(function() { 
         $.ajax({
-            url: "viewfilesdata.php",
+            url: "../src/viewfilesdata.php",
             type: "POST", //Or even get
             data: { 
               //These are the variables and their relative values
@@ -544,7 +544,7 @@ $(document).ready(function() {
     }
     document.title = "Monitordroid - View Files";
     /*$.ajax({
-        url: "viewfilesdata.php",
+        url: "../src/viewfilesdata.php",
         type: "POST", //Or even get
         data: { 
           //These are the variables and their relative values
@@ -557,7 +557,7 @@ $(document).ready(function() {
 
         }
     });*/
-    handleCallback("getfilelist", "viewfilesdata.php", initializeAjaxElements, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("getfilelist", "../src/viewfilesdata.php", initializeAjaxElements, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
     $("#update_btn").bind("click", updatePage);
     $("#file-list-filter-go").bind("click", file_list_filter_active_click);
@@ -567,7 +567,7 @@ $(document).ready(function() {
     });
     /*if (Cookies.get('options_autoRefreshPages') == "true") {
         var updateIntervalID = setInterval(updatePage, (Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1)) * 1000 * 60);
-        tabsUnloadData["viewfilesx.php"] = function(){
+        tabsUnloadData["../src/viewfilesx.php"] = function(){
             clearInterval(updateIntervalID);
             if(typeof(Storage) !== "undefined") {
                 localStorage.setItem("filesPath", globalPath);
@@ -575,7 +575,7 @@ $(document).ready(function() {
         };
     }*/
     //else {
-        /*tabsUnloadData["viewfilesx.php"] = function(){
+        /*tabsUnloadData["../src/viewfilesx.php"] = function(){
             if(typeof(Storage) !== "undefined") {
                 localStorage.setItem("filesPath", globalPath);
             }
@@ -722,4 +722,3 @@ $(document).ready(function() {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
