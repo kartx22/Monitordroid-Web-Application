@@ -9,7 +9,7 @@
 Monitordroid:
 
 
-<form action="checker2.php" method="post">
+<form action="../src/checker2.php" method="post">
 <p>Check if valid account:
 <input type="text" name="accountname" maxlength="70" />
 </p>
