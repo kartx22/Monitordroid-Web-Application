@@ -10,7 +10,7 @@ if(!isset($_SESSION)) session_start();
 	$rName=$_SESSION["registration"];
 	$rowId=$_SESSION["rowid"];
 
-	include_once './db_functions.php';
+	include_once '../db_functions.php';
 
 	$db = new DB_Functions();
 	$contactslist = $db->getContacts($rName);
