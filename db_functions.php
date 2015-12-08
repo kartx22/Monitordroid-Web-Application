@@ -11,7 +11,7 @@ class DB_Functions {
 	// constructor
 	function __construct() {
 
-		require_once 'config.php';
+		require_once './config.php';
 		// connecting to mysql
 		
 
