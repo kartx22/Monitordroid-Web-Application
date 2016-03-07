@@ -31,8 +31,8 @@
 }
 </style>
 	
-<link rel="stylesheet" type="text/css" href="./lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
-<script type="text/javascript" src="./lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap-sortable/Contents/bootstrap-sortable.css"></style>
+<script type="text/javascript" src="../lib/bootstrap-sortable/Scripts/bootstrap-sortable.js"></script>
 
 <script type="text/javascript">
 var generateDisplay = function(json) {
@@ -76,9 +76,9 @@ function stageTwo(){
         $("#load-buttons").css("display", "block");
         $("#update_btn").prop("disabled", false);
     };
-    //poll("contactsdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, loadedCallback, "contacts");
+    //poll("../src/contactsdata.php", "<?php echo $rName ?>", "<?php echo $rowId ?>", date, loadedCallback, "contacts");
 
-    handleCallback("contacts", "contactsdata.php", loadedCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("contacts", "../src/contactsdata.php", loadedCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 };
 
 jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
@@ -143,13 +143,13 @@ $(document).ready(function() {
         $.bootstrapSortable(false, 'reversed');
         $('#contacts').css("display", "block");
     };
-    handleCallback("contacts", "contactsdata.php", loadContactsCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
+    handleCallback("contacts", "../src/contactsdata.php", loadContactsCallback, "<?php echo $rName ?>", "<?php echo $rowId ?>");
 
 	$("#update_btn").bind("click", updateProc);
 	$("#contacts-filter-go").bind("click", contacts_filter_active_click);
 	$("#contacts-search-keyword").bind("keyup", contacts_filter_type_keyup);
 
-    var scriptsToUnload = {"./lib/bootstrap-sortable/Scripts/bootstrap-sortable.js": true};
+    var scriptsToUnload = {"../lib/bootstrap-sortable/Scripts/bootstrap-sortable.js": true};
     var pageUnloadProc = function() {
         $("#contacts_tab_elcont").html(
             $("#contacts_tab_elcont").html().replace(/<script\s+src="([^"]+)"><\/script>/gi, function(str, file) {
@@ -164,14 +164,14 @@ $(document).ready(function() {
     };
 	if (Cookies.get('options_autoRefreshPages') == "true") {
 		var updateIntervalID = setInterval(updateProc, Number(Cookies.get('options_autoRefreshFreq') ? Cookies.get('options_autoRefreshFreq') : 1) * 1000 * 60);
-		tabsUnloadData["readcontactsx.php"] = function(){
+		tabsUnloadData["../src/readcontactsx.php"] = function(){
 			console.log("unloading contacts");
 		    clearInterval(updateIntervalID);
 		    pageUnloadProc();
 		};
 	}
 	else {
-		tabsUnloadData["readcontactsx.php"] = function(){
+		tabsUnloadData["../src/readcontactsx.php"] = function(){
 		    pageUnloadProc();
 		};
 	}
